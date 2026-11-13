@@ -1,6 +1,6 @@
 blueprint:
   name: Zooz ZEN76 S2 Switch
-  author: gregmac (updated for HA 2026.11)
+  author: Joseph Wotell
   homeassistant:
     min_version: 2024.10.0
   domain: automation
