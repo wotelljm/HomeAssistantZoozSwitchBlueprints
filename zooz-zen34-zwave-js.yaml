@@ -1,0 +1,134 @@
+blueprint:
+  name: Zooz ZEN34 Remote scene control
+  description: >-
+    Use the Zooz ZEN34 remote to trigger scenes and control devices.
+    Matches on numeric scene/key codes, so it is not affected by Z-Wave JS
+    label changes (e.g. "Scene 001" becoming "Upper Paddle" in HA 2026.11).
+  domain: automation
+  homeassistant:
+    min_version: 2024.10.0
+  input:
+    zwave_device:
+      name: Zooz Zen34
+      description: List of available Zooz ZEN34 remotes.
+      selector:
+        device:
+          multiple: false
+          filter:
+            - integration: zwave_js
+              manufacturer: Zooz
+              model: ZEN34
+    1x_tap_up:
+      name: Tap up 1x
+      selector:
+        action: {}
+      default: []
+    1x_tap_down:
+      name: Tap down 1x
+      selector:
+        action: {}
+      default: []
+    2x_tap_up:
+      name: Tap up 2x
+      selector:
+        action: {}
+      default: []
+    2x_tap_down:
+      name: Tap down 2x
+      selector:
+        action: {}
+      default: []
+    3x_tap_up:
+      name: Tap up 3x
+      selector:
+        action: {}
+      default: []
+    3x_tap_down:
+      name: Tap down 3x
+      selector:
+        action: {}
+      default: []
+    4x_tap_up:
+      name: Tap up 4x
+      selector:
+        action: {}
+      default: []
+    4x_tap_down:
+      name: Tap down 4x
+      selector:
+        action: {}
+      default: []
+    5x_tap_up:
+      name: Tap up 5x
+      selector:
+        action: {}
+      default: []
+    5x_tap_down:
+      name: Tap down 5x
+      selector:
+        action: {}
+      default: []
+    hold_up:
+      name: Hold up
+      selector:
+        action: {}
+      default: []
+    hold_down:
+      name: Hold down
+      selector:
+        action: {}
+      default: []
+  source_url: https://community.home-assistant.io/t/zooz-zen34-zwave-js/290561
+
+mode: queued
+max: 10
+max_exceeded: silent
+
+triggers:
+  - trigger: event
+    event_type: zwave_js_value_notification
+    event_data:
+      command_class_name: Central Scene
+      device_id: !input zwave_device
+
+actions:
+  - variables:
+      # property_key: 1 = up, 2 = down
+      # value_raw: 0 pressed, 1 released, 2 held, 3 = 2x, 4 = 3x, 5 = 4x, 6 = 5x
+      scene_num: "{{ trigger.event.data.property_key | int(0) }}"
+      key_raw: "{{ trigger.event.data.value_raw | int(-1) }}"
+  - choose:
+      - conditions: "{{ scene_num == 1 and key_raw == 0 }}"
+        sequence: !input 1x_tap_up
+      - conditions: "{{ scene_num == 2 and key_raw == 0 }}"
+        sequence: !input 1x_tap_down
+      - conditions: "{{ scene_num == 1 and key_raw == 3 }}"
+        sequence: !input 2x_tap_up
+      - conditions: "{{ scene_num == 2 and key_raw == 3 }}"
+        sequence: !input 2x_tap_down
+      - conditions: "{{ scene_num == 1 and key_raw == 4 }}"
+        sequence: !input 3x_tap_up
+      - conditions: "{{ scene_num == 2 and key_raw == 4 }}"
+        sequence: !input 3x_tap_down
+      - conditions: "{{ scene_num == 1 and key_raw == 5 }}"
+        sequence: !input 4x_tap_up
+      - conditions: "{{ scene_num == 2 and key_raw == 5 }}"
+        sequence: !input 4x_tap_down
+      - conditions: "{{ scene_num == 1 and key_raw == 6 }}"
+        sequence: !input 5x_tap_up
+      - conditions: "{{ scene_num == 2 and key_raw == 6 }}"
+        sequence: !input 5x_tap_down
+      - conditions: "{{ scene_num == 1 and key_raw == 2 }}"
+        sequence: !input hold_up
+      - conditions: "{{ scene_num == 2 and key_raw == 2 }}"
+        sequence: !input hold_down
+    default:
+      - action: system_log.write
+        data:
+          level: debug
+          logger: blueprint.zen34
+          message: >-
+            Unhandled ZEN34 event: {{ trigger.event.data.label }}
+            (key {{ trigger.event.data.property_key }}) value
+            {{ trigger.event.data.value }} ({{ trigger.event.data.value_raw }})
+            on node {{ trigger.event.data.node_id }}
