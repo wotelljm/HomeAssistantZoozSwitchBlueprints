@@ -78,7 +78,7 @@ blueprint:
       selector:
         action: {}
       default: []
-  source_url: https://community.home-assistant.io/t/zooz-zen34-zwave-js/290561
+  source_url: https://raw.githubusercontent.com/wotelljm/HomeAssistantZoozSwitchBlueprints/refs/heads/main/zooz-zen34-zwave-js.yaml
 
 mode: queued
 max: 10
