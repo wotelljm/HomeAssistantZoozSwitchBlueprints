@@ -1,6 +1,6 @@
 blueprint:
   name: Zooz ZEN34 Remote scene control
-  author: Joseph Wotell
+  author: Joseph Wotell (based on community thread 290561)
   description: >-
     Use the Zooz ZEN34 remote to trigger scenes and control devices.
     Matches on numeric scene/key codes, so it is not affected by Z-Wave JS
