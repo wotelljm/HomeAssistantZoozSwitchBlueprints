@@ -2,7 +2,7 @@
 
 Home Assistant automation blueprints for Zooz Z-Wave switches and remotes using the Z-Wave JS integration.
 
-This is a maintained fork of [gregmac/HomeAssistant-ZoozBlueprints](https://github.com/gregmac/HomeAssistant-ZoozBlueprints), updated to work with Home Assistant 2026.11 and later.
+These are updated versions of blueprints from [gregmac/HomeAssistant-ZoozBlueprints](https://github.com/gregmac/HomeAssistant-ZoozBlueprints), updated to work with Home Assistant 2026.11 and later.
 
 ## Why this fork exists
 
@@ -29,7 +29,7 @@ Actions for 1x–5x presses, hold, and release on both paddles. On automation re
 
 Supports ZEN76 and ZEN76 800LR.
 
-[![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fwotelljm%2FHomeAssistant-ZoozBlueprints%2Fblob%2Fmain%2FZEN76%2520S2%2520Switch.yaml)
+[![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fwotelljm%2FHomeAssistantZoozSwitchBlueprints%2Fblob%2Fmain%2Fzooz-zen76-s2-zwavejs.yaml)
 
 **Changes from the original:**
 - Matches on `property_key` / `value_raw` instead of label text
@@ -44,7 +44,7 @@ Actions for 1x–5x taps and hold on both paddles.
 
 Based on the blueprint in the Home Assistant community thread [Zooz ZEN34 Z-Wave JS](https://community.home-assistant.io/t/zooz-zen34-zwave-js/290561).
 
-[![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fwotelljm%2FHomeAssistant-ZoozBlueprints%2Fblob%2Fmain%2FZEN34%2520Remote.yaml)
+[![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fwotelljm%2FHomeAssistantZoozSwitchBlueprints%2Fblob%2Fmain%2Fzooz-zen34-zwave-js.yaml)
 
 **Changes from the original:**
 - Matches on `property_key` / `value_raw` instead of label text
