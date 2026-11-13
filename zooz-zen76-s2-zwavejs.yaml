@@ -141,8 +141,7 @@ blueprint:
       selector:
         action: {}
       description: Action to run when the button is released.
-  source_url: https://raw.githubusercontent.com/gregmac/HomeAssistant-ZoozBlueprints/refs/heads/main/ZEN76%20S2%20Switch.yaml
-
+  source_url: https://raw.githubusercontent.com/wotelljm/HomeAssistantZoozSwitchBlueprints/refs/heads/main/zooz-zen76-s2-zwavejs.yaml
 mode: parallel
 max_exceeded: silent
 
